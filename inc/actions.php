@@ -40,5 +40,6 @@ function proc(): void
         redirect('form');
     }
 
+    addNameToFile($name, $gender);
     redirect('index');
 }
