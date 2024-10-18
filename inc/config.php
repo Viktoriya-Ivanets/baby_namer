@@ -13,3 +13,13 @@ const ERROR_MESSAGE = [
     2 => 'The name cannot be empty',
     3 => 'The name should be kept from 3 to 30 characters.'
 ];
+const VALIDATES_FOR_FIELD = [
+    'name' => [
+        ['isNotEmpty', ['name', ERROR_MESSAGE[2]]],
+        ['validateName', ['name', ERROR_MESSAGE[3]]],
+    ],
+    'gender' => [
+        ['isNotEmpty', ['gender', ERROR_MESSAGE[0]]],
+        ['validateGender', ['gender', AVAILABLE_GENDERS, ERROR_MESSAGE[1]]],
+    ],
+];
