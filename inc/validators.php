@@ -10,9 +10,9 @@ function validateGender(string $gender, array $availableGenders): string | null
 {
 
     if (empty($gender)) {
-        return 'Gender cannot be empty';
+        return ERROR_MESSAGE[0];
     } else if (!in_array($gender, $availableGenders)) {
-        return 'Incorrect gender - must be male or female';
+        return ERROR_MESSAGE[1];
     }
     return null;
 }
@@ -25,12 +25,12 @@ function validateGender(string $gender, array $availableGenders): string | null
 function validateName(string $name): string | null
 {
     if (empty($name)) {
-        return "The name cannot be empty.";
+        return ERROR_MESSAGE[2];
     }
 
     $length = strlen($name);
     if ($length < 3 || $length > 20) {
-        return "The name should be kept from 3 to 30 characters.";
+        return ERROR_MESSAGE[3];
     }
 
     return null;
