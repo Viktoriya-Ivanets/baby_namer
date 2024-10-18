@@ -24,22 +24,20 @@ function form(): void
  */
 function proc(): void
 {
-    $name = htmlspecialchars(filter_input(INPUT_POST, 'name'));
-    $gender = htmlspecialchars(filter_input(INPUT_POST, 'gender'));
 
-    $errors = [];
-    if ($nameError = validateName($name)) {
-        $errors[] = $nameError;
-    }
-    if ($genderError = validateGender($gender, AVAILABLE_GENDERS)) {
-        $errors[] = $genderError;
-    }
+    $fields = [
+        'name' => htmlspecialchars(filter_input(INPUT_POST, 'name')),
+        'gender' => htmlspecialchars(filter_input(INPUT_POST, 'gender')),
+    ];
+
+    $errors = validateFields($fields);
 
     if (count($errors) > 0) {
         setErrors($errors);
         redirect('form');
     }
 
-    addNameToFile($name, $gender);
+    addNameToFile($fields['name'], $fields['gender']);
+
     redirect('index');
 }
