@@ -6,7 +6,7 @@
  */
 function index(): void
 {
-    render('index');
+    render('index', ['namesForDisplay' => prepareNamesForDisplay()]);
 }
 
 /**
@@ -15,7 +15,7 @@ function index(): void
  */
 function form(): void
 {
-    render('index', ['errors' => getErrors()]);
+    render('index', ['errors' => getErrors(), 'namesForDisplay' => prepareNamesForDisplay()]);
 }
 
 /**
