@@ -13,6 +13,25 @@ function render(string $page, array $data = [], string $template = 'main'): void
 }
 
 /**
+ * Format array for easy and correct names displaying, grouped by gender
+ * @return array
+ */
+function prepareNamesForDisplay(): array
+{
+    $names = readNamesFromFile();
+    $maleNames = $names['male'] ?? [];
+    $femaleNames = $names['female'] ?? [];
+    $maxRows = max(count($maleNames), count($femaleNames));
+
+    return array_map(function ($i) use ($maleNames, $femaleNames) {
+        return [
+            'male' => $maleNames[$i] ?? '',
+            'female' => $femaleNames[$i] ?? ''
+        ];
+    }, range(0, $maxRows - 1));
+}
+
+/**
  * Sets errors in the session
  * @param array $errors
  * @return void
