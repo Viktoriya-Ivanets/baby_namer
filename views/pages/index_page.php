@@ -7,11 +7,17 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($namesForDisplay as $row) : ?>
+        <?php if (!empty($namesForDisplay)): ?>
+            <?php foreach ($namesForDisplay as $row) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['male']) ?></td>
+                    <td><?= htmlspecialchars($row['female']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
             <tr>
-                <td><?= htmlspecialchars($row['male']) ?></td>
-                <td><?= htmlspecialchars($row['female']) ?></td>
+                <td colspan="2">No added names, please add some name by form</td>
             </tr>
-        <?php endforeach; ?>
+        <?php endif; ?>
     </tbody>
 </table>
