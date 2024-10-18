@@ -19,6 +19,10 @@ function render(string $page, array $data = [], string $template = 'main'): void
 function prepareNamesForDisplay(): array
 {
     $names = readNamesFromFile();
+
+    if (!$names) {
+        return [];
+    }
     $maleNames = $names['male'] ?? [];
     $femaleNames = $names['female'] ?? [];
     $maxRows = max(count($maleNames), count($femaleNames));
