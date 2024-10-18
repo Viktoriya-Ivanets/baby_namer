@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Get data from passed file path or create new file
+ * Get names from JSON file
  * @param string $filePath
- * @return array
+ * @return array|null
  */
-function readNamesFromFile(string $filePath = DEFAULT_NAME_FILE): array
+function readNamesFromFile(string $filePath = DEFAULT_NAME_FILE): array|null
 {
     if (!file_exists($filePath)) {
-        return ['male' => [], 'female' => []];
+        return null;
     }
 
     $jsonData = file_get_contents($filePath);
