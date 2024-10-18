@@ -61,6 +61,32 @@ function getErrors(): array
 }
 
 /**
+ * Save POST data in session due to invalid input
+ * @param array $fields
+ * @return void
+ */
+function setOldInput(array $fields): void
+{
+    session_start();
+    $_SESSION['old_input'] = $fields;
+}
+
+/**
+ * Get old input from session
+ * @return array
+ */
+function getOldInput(): array
+{
+    session_start();
+    if (isset($_SESSION['old_input']) && is_array($_SESSION['old_input'])) {
+        $oldInput = $_SESSION['old_input'];
+        unset($_SESSION['old_input']);
+        return $oldInput;
+    }
+    return [];
+}
+
+/**
  * Initialize page with content defined by action
  * @return void
  */
