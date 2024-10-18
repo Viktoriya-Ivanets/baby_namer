@@ -15,7 +15,7 @@ function index(): void
  */
 function form(): void
 {
-    render('index', ['errors' => getErrors(), 'namesForDisplay' => prepareNamesForDisplay()]);
+    render('index', ['errors' => getErrors(), 'namesForDisplay' => prepareNamesForDisplay(), 'oldInput' => getOldInput()]);
 }
 
 /**
@@ -34,6 +34,7 @@ function proc(): void
 
     if (count($errors) > 0) {
         setErrors($errors);
+        setOldInput($fields);
         redirect('form');
     }
 
